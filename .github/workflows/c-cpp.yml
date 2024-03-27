@@ -14,8 +14,7 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: make makefiles
-      run: make -f Makefile.init makefiles     "CCARGS=-DHAS_MYSQL -I/usr/local/mysql/include -DUSE_SASL_AUTH"     "AUXLIBS_MYSQL=-L/usr/lib/x86_64-linux-gnu/ -lmariadbclient -lz -lm -lssl -lcrypto" CCARGS="-DUSE_SASL_AUTH \
-    -DDEF_SERVER_SASL_TYPE=\\\"dovecot\\\" -DUSE_TLS" dynamicmaps=yes AUXLIBS="-lssl -lcrypto"
+      run: make -f Makefile.init makefiles "CCARGS=-DHAS_MYSQL -I/usr/local/mysql/include -DUSE_SASL_AUTH" "AUXLIBS_MYSQL=-L/usr/lib/x86_64-linux-gnu/ -lmariadbclient -lz -lm -lssl -lcrypto" CCARGS="-DUSE_SASL_AUTH -DDEF_SERVER_SASL_TYPE=\"dovecot\" -DUSE_TLS" dynamicmaps=yes AUXLIBS="-lssl -lcrypto"
     - name: make 
       run: make -j3
       
