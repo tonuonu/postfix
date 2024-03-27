@@ -23,7 +23,7 @@ jobs:
       run: sudo apt-get install -y mariadb-server mariadb-client dovecot-mysql dovecot-imapd dovecot-submissiond dovecot-pop3d
     - name: make makefiles
       working-directory: ./postfix
-      run: make -f Makefile.init makefiles "CCARGS=-DHAS_MYSQL -I/usr/local/mysql/include -DUSE_SASL_AUTH -DDEF_SERVER_SASL_TYPE=\\\"dovecot\\\" -DUSE_TLS" "AUXLIBS_MYSQL=-L/usr/lib/x86_64-linux-gnu/ -lmariadbclient -lz -lm -lssl -lcrypto" dynamicmaps=yes AUXLIBS="-lssl -lcrypto"
+      run: make -f Makefile.init makefiles "CCARGS=-DHAS_MYSQL -I/usr/include/mysql/ -DUSE_SASL_AUTH -DDEF_SERVER_SASL_TYPE=\\\"dovecot\\\" -DUSE_TLS" "AUXLIBS_MYSQL=-L/usr/lib/x86_64-linux-gnu/ -lmariadbclient -lz -lm -lssl -lcrypto" dynamicmaps=yes AUXLIBS="-lssl -lcrypto"
     - name: make 
       working-directory: ./postfix
       run: make -j3
