@@ -16,7 +16,9 @@ jobs:
     - name: Install Berkeley DB
       run: sudo apt-get install -y libdb-dev
     - name: Install MariaDB client dev
-      run: sudo apt-get install -y libmariadbclient-dev
+      run: sudo apt-get install -y libmariadb-dev
+    - name: Install GCC
+      run: sudo apt-get install -y gcc
     - name: make makefiles
       working-directory: ./postfix
       run: make -f Makefile.init makefiles "CCARGS=-DHAS_MYSQL -I/usr/local/mysql/include -DUSE_SASL_AUTH" "AUXLIBS_MYSQL=-L/usr/lib/x86_64-linux-gnu/ -lmariadbclient -lz -lm -lssl -lcrypto" CCARGS="-DUSE_SASL_AUTH -DDEF_SERVER_SASL_TYPE=\"dovecot\" -DUSE_TLS" dynamicmaps=yes AUXLIBS="-lssl -lcrypto"
